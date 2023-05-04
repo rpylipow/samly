@@ -91,6 +91,11 @@ defmodule Samly.SPHandler do
     idp_id_in_session = get_session(conn, "idp_id")
     url_in_session = get_session(conn, "target_url")
 
+    IO.inspect(relay_state, label: "relay_state")
+    IO.inspect(rs_in_session, label: "rs_in_session")
+    IO.inspect(idp_id_in_session, label: "idp_id_in_session")
+    IO.inspect(url_in_session, label: "url_in_session")
+
     cond do
       rs_in_session == nil || rs_in_session != relay_state ->
         {:error, :invalid_relay_state}
